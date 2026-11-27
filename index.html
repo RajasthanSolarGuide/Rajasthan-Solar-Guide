@@ -3,108 +3,273 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123c35">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rajasthan Solar Guide</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f7f4;color:#18352c}
-header{background:#123c35;color:white;padding:25px 16px;text-align:center}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7f4;color:#222}
+header{background:linear-gradient(120deg,#087b45,#16a05c);color:white;text-align:center;padding:25px 12px}
 header h1{margin:0;font-size:25px}
-header p{margin-bottom:0}
-nav{background:#fff;padding:12px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-nav a{color:#176b45;text-decoration:none;font-weight:bold}
-.container{max-width:850px;margin:auto;padding:15px}
-.card{background:white;padding:18px;margin:14px 0;border-radius:13px;box-shadow:0 2px 10px #0001}
-h2{color:#176b45;font-size:21px}
-input,select,button{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:8px;font-size:16px}
-button{background:#16834c;color:white;border:0;font-weight:bold}
-.result{background:#e5f5e9;padding:15px;border-radius:10px;margin-top:10px}
-footer{background:#123c35;color:white;text-align:center;padding:20px;margin-top:25px}
+nav{display:flex;overflow-x:auto;background:#075b36;padding:10px;gap:8px}
+nav a{color:white;text-decoration:none;white-space:nowrap;padding:8px;font-size:14px}
+main{padding:12px;max-width:850px;margin:auto}
+section{background:white;margin:14px 0;padding:17px;border-radius:13px;box-shadow:0 2px 9px #0001}
+h2{color:#087b45;font-size:20px;margin-top:0}
+p{line-height:1.6}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 13px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+button,.btn{background:#087b45;color:white;border:0;border-radius:8px;padding:12px 15px;font-size:15px;cursor:pointer;text-decoration:none;display:inline-block}
+button{width:100%}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tile{background:#e8f5ed;padding:14px;border-radius:10px;text-align:center}
+.small{font-size:13px;color:#666}
+.result{background:#e8f5ed;padding:13px;border-radius:8px;margin-top:10px}
+footer{text-align:center;background:#075b36;color:white;padding:20px}
+.hidden{display:none}
 </style>
 </head>
 <body>
-
 <header>
-<h1>☀️ Rajasthan Solar Guide</h1>
-<p>राजस्थान में सोलर की पूरी जानकारी एक जगह</p>
+<div style="font-size:38px">☀️</div>
+<h1>Rajasthan Solar Guide</h1>
+<p>सोलर की जानकारी • सरकारी योजनाएँ • ऑनलाइन बुकिंग</p>
 </header>
 
 <nav>
 <a href="#home">होम</a>
+<a href="#schemes">योजनाएँ</a>
 <a href="#calculator">कैलकुलेटर</a>
-<a href="#benefits">फायदे</a>
-<a href="#contact">संपर्क</a>
+<a href="#farmer">किसान</a>
+<a href="#register">रजिस्ट्रेशन</a>
+<a href="#booking">बुकिंग</a>
+<a href="#districts">जिले</a>
+<a href="#admin">एडमिन</a>
 </nav>
 
-<div class="container">
-
-<section class="card" id="home">
-<h2>राजस्थान सोलर गाइड में आपका स्वागत है</h2>
-<p>अपने घर, दुकान और व्यवसाय के लिए सोलर सिस्टम की जानकारी प्राप्त करें।</p>
-<p>☀️ सोलर पैनल की जानकारी</p>
-<p>💰 सोलर खर्च का अनुमान</p>
-<p>🏠 रूफटॉप सोलर की जानकारी</p>
-<p>📋 सरकारी योजनाओं की जानकारी</p>
+<main>
+<section id="home">
+<h2>आपका स्वागत है 🙏</h2>
+<p>राजस्थान में घर, दुकान और खेत के लिए सोलर की जानकारी प्राप्त करें। सोलर लगवाने के लिए ऑनलाइन आवेदन करें।</p>
+<div class="grid">
+<div class="tile">🏠<br><b>घर का सोलर</b></div>
+<div class="tile">🌾<br><b>किसान सोलर</b></div>
+<div class="tile">💰<br><b>सब्सिडी जानकारी</b></div>
+<div class="tile">🔧<br><b>इंस्टॉलर सहायता</b></div>
+</div>
 </section>
 
-<section class="card" id="calculator">
-<h2>☀️ Solar Calculator</h2>
-<label>आपका बिजली बिल (₹ प्रति महीना)</label>
+<section id="schemes">
+<h2>सरकारी सोलर योजनाएँ</h2>
+<h3>1. PM Surya Ghar योजना</h3>
+<p>घरों की छत पर सोलर लगाने के लिए केंद्र सरकार की योजना। पात्रता और सब्सिडी की ताजा जानकारी आधिकारिक पोर्टल पर देखें।</p>
+<a class="btn" href="https://pmsuryaghar.gov.in/" target="_blank">आधिकारिक वेबसाइट</a>
+<h3>2. PM-KUSUM योजना</h3>
+<p>किसानों के लिए सोलर पंप और कृषि बिजली से जुड़ी सहायता की योजना। आवेदन की उपलब्धता राज्य के अनुसार देखें।</p>
+<a class="btn" href="https://pmkusum.mnre.gov.in/" target="_blank">आधिकारिक वेबसाइट</a>
+<h3>3. राजस्थान सोलर जानकारी</h3>
+<p>राजस्थान की योजनाओं, पात्रता और आवेदन की जानकारी सरकारी विभाग से सत्यापित करें।</p>
+<a class="btn" href="https://energy.rajasthan.gov.in/" target="_blank">राजस्थान ऊर्जा विभाग</a>
+</section>
+
+<section id="calculator">
+<h2>सोलर कैलकुलेटर ⚡</h2>
+<label>आपका मासिक बिजली बिल (₹)</label>
 <input type="number" id="bill" placeholder="जैसे 2000">
-<button onclick="calculate()">खर्च का अनुमान देखें</button>
-<div class="result" id="result">
-यहाँ आपका सोलर अनुमान दिखाई देगा।
+<label>प्रति यूनिट बिजली दर (₹)</label>
+<input type="number" id="rate" value="7">
+<button onclick="calculate()">सोलर क्षमता का अनुमान देखें</button>
+<div id="calcResult" class="result hidden"></div>
+<p class="small">यह केवल शुरुआती अनुमान है। वास्तविक क्षमता छत, धूप, बिजली खपत और तकनीकी सर्वे पर निर्भर करती है।</p>
+</section>
+
+<section id="farmer">
+<h2>किसानों के लिए सोलर 🌾</h2>
+<h3>सोलर कृषि पंप</h3>
+<p>खेतों में सिंचाई के लिए सोलर पंप की जानकारी प्राप्त करें।</p>
+<h3>PM-KUSUM योजना</h3>
+<p>सोलर पंप और कृषि सोलर परियोजनाओं के लिए पात्रता तथा आवेदन की जानकारी आधिकारिक पोर्टल पर देखें।</p>
+<a class="btn" href="https://pmkusum.mnre.gov.in/" target="_blank">किसान योजना देखें</a>
+</section>
+
+<section id="register">
+<h2>ग्राहक रजिस्ट्रेशन 📝</h2>
+<form id="regForm">
+<label>पूरा नाम</label>
+<input name="name" required placeholder="अपना नाम">
+<label>मोबाइल नंबर</label>
+<input name="phone" required type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर">
+<label>जिला</label>
+<select name="district" class="districtSelect" required></select>
+<label>गाँव / शहर</label>
+<input name="village" required placeholder="गाँव या शहर">
+<label>सोलर का प्रकार</label>
+<select name="type">
+<option>घर का सोलर</option>
+<option>दुकान का सोलर</option>
+<option>खेत का सोलर</option>
+<option>सोलर पंप</option>
+</select>
+<button type="submit">रजिस्ट्रेशन करें</button>
+</form>
+<p id="regMsg"></p>
+</section>
+
+<section id="booking">
+<h2>ऑनलाइन सोलर बुकिंग 📅</h2>
+<form id="bookForm">
+<label>ग्राहक का नाम</label>
+<input name="name" required placeholder="नाम">
+<label>मोबाइल नंबर</label>
+<input name="phone" required type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल">
+<label>जिला</label>
+<select name="district" class="districtSelect" required></select>
+<label>गाँव / पता</label>
+<input name="address" required placeholder="पूरा पता">
+<label>कितने KW का सोलर चाहिए?</label>
+<select name="kw">
+<option>1 KW</option><option>2 KW</option>
+<option>3 KW</option><option>5 KW</option>
+<option>10 KW</option><option>अभी जानकारी चाहिए</option>
+</select>
+<label>कब लगवाना चाहते हैं?</label>
+<input type="date" name="date">
+<button type="submit">बुकिंग रिक्वेस्ट भेजें</button>
+</form>
+<p id="bookMsg"></p>
+</section>
+
+<section id="vendors">
+<h2>सोलर विक्रेता और इंस्टॉलर 🔧</h2>
+<p>अपने जिले में सोलर इंस्टॉलर की जानकारी के लिए हमसे संपर्क करें। सत्यापित विक्रेताओं की सूची जल्द जोड़ी जाएगी।</p>
+<a class="btn" href="#booking">इंस्टॉलर की रिक्वेस्ट करें</a>
+</section>
+
+<section id="districts">
+<h2>राजस्थान के सभी 41 जिले</h2>
+<input id="districtSearch" placeholder="जिला खोजें..." oninput="filterDistricts()">
+<div id="districtList" class="grid"></div>
+</section>
+
+<section id="whatsapp">
+<h2>WhatsApp सहायता 📲</h2>
+<p>सोलर की जानकारी या बुकिंग के लिए WhatsApp पर संपर्क करें।</p>
+<a class="btn" id="waLink" href="#" target="_blank">WhatsApp पर संपर्क करें</a>
+<p class="small">अपना असली WhatsApp नंबर कोड में भरना जरूरी है।</p>
+</section>
+
+<section id="admin">
+<h2>एडमिन पैनल 🔐</h2>
+<p class="small">डेमो एडमिन लॉगिन। सार्वजनिक वेबसाइट पर इसे सुरक्षित लॉगिन से बदलना जरूरी है।</p>
+<input type="password" id="adminPin" placeholder="Admin PIN">
+<button onclick="adminLogin()">लॉगिन</button>
+<div id="adminArea" class="hidden">
+<h3>रजिस्ट्रेशन</h3>
+<div id="regData"></div>
+<h3>बुकिंग रिक्वेस्ट</h3>
+<div id="bookData"></div>
+<button onclick="exportData()">डेटा डाउनलोड करें</button>
+<button onclick="adminLogout()" style="background:#777;margin-top:8px">लॉगआउट</button>
 </div>
 </section>
-
-<section class="card" id="benefits">
-<h2>सोलर लगाने के फायदे</h2>
-<p>✅ बिजली बिल कम करने में मदद</p>
-<p>✅ स्वच्छ और नवीकरणीय ऊर्जा</p>
-<p>✅ लंबे समय तक उपयोग</p>
-<p>✅ बिजली पर निर्भरता कम</p>
-</section>
-
-<section class="card">
-<h2>सरकारी सोलर योजना</h2>
-<p>प्रधानमंत्री सूर्य घर मुफ्त बिजली योजना के तहत पात्र घरेलू उपभोक्ता सब्सिडी के लिए आवेदन कर सकते हैं।</p>
-<p>आधिकारिक वेबसाइट:</p>
-<a href="https://pmsuryaghar.gov.in/" target="_blank">PM Surya Ghar Portal खोलें</a>
-</section>
-
-<section class="card" id="contact">
-<h2>संपर्क करें</h2>
-<p><b>Rajasthan Solar Guide</b></p>
-<p>राजस्थान में सोलर जानकारी और मार्गदर्शन के लिए संपर्क करें।</p>
-</section>
-
-</div>
+</main>
 
 <footer>
+<p><b>Rajasthan Solar Guide</b></p>
+<p>राजस्थान के हर घर और खेत तक सोलर की जानकारी ☀️</p>
 <p>© 2026 Rajasthan Solar Guide</p>
-<p>सौर ऊर्जा अपनाएँ, बिजली बचाएँ ☀️</p>
 </footer>
 
 <script>
+const districts = [
+"अजमेर","अलवर","बालोतरा","बांसवाड़ा","बारां",
+"बाड़मेर","ब्यावर","भरतपुर","भीलवाड़ा","बीकानेर",
+"बूंदी","चित्तौड़गढ़","चूरू","दौसा","डीग",
+"धौलपुर","डीडवाना-कुचामन","डूंगरपुर","श्रीगंगानगर",
+"हनुमानगढ़","जयपुर","जैसलमेर","जालौर","झालावाड़",
+"झुंझुनूं","जोधपुर","करौली","खैरथल-तिजारा","कोटा",
+"कोटपूतली-बहरोड़","नागौर","पाली","फलोदी","प्रतापगढ़",
+"राजसमंद","सलूम्बर","सवाई माधोपुर","सीकर","सिरोही",
+"टोंक","उदयपुर"
+];
+
+document.querySelectorAll(".districtSelect").forEach(s=>{
+s.innerHTML='<option value="">जिला चुनें</option>'+
+districts.map(d=>`<option>${d}</option>`).join("");
+});
+
+function filterDistricts(){
+let q=document.getElementById("districtSearch").value.toLowerCase();
+document.getElementById("districtList").innerHTML=
+districts.filter(d=>d.toLowerCase().includes(q))
+.map(d=>`<div class="tile">${d}</div>`).join("");
+}
+filterDistricts();
+
 function calculate(){
 let bill=Number(document.getElementById("bill").value);
-if(bill<=0){
-document.getElementById("result").innerHTML="कृपया सही बिजली बिल डालें।";
-return;
+let rate=Number(document.getElementById("rate").value);
+if(bill<=0||rate<=0){alert("बिजली बिल और दर भरें");return;}
+let units=bill/rate;
+let kw=units/120;
+let capacity=Math.max(1,Math.ceil(kw));
+let saving=Math.round(units*rate);
+let r=document.getElementById("calcResult");
+r.classList.remove("hidden");
+r.innerHTML=`मासिक यूनिट: ${Math.round(units)}<br>
+अनुमानित सोलर क्षमता: ${capacity} KW<br>
+मौजूदा मासिक बिल: ₹${saving}<br>
+सही क्षमता के लिए साइट सर्वे जरूरी है।`;
 }
-let units=bill/7;
-let kw=Math.max(1,Math.ceil(units/120));
-let generation=kw*120;
-let cost=kw*50000;
-document.getElementById("result").innerHTML=
-"<h3>आपका अनुमान</h3>"+
-"अनुमानित सोलर क्षमता: "+kw+" kW<br>"+
-"अनुमानित मासिक उत्पादन: "+generation+" यूनिट<br>"+
-"अनुमानित शुरुआती लागत: ₹"+cost.toLocaleString("en-IN")+
-"<p>यह केवल शुरुआती अनुमान है। वास्तविक लागत और उत्पादन स्थान, उपकरण और छत की स्थिति पर निर्भर करेंगे। सब्सिडी इसमें शामिल नहीं है।</p>";
-}
-</script>
 
+function getData(key){
+try{return JSON.parse(localStorage.getItem(key)||"[]")}catch(e){return []}
+}
+function saveForm(form,key,msg){
+form.addEventListener("submit",e=>{
+e.preventDefault();
+let data=Object.fromEntries(new FormData(form).entries());
+data.created=new Date().toLocaleString("hi-IN");
+let all=getData(key);all.push(data);
+localStorage.setItem(key,JSON.stringify(all));
+document.getElementById(msg).innerText=
+"आपकी जानकारी इस डिवाइस में सेव हो गई है। धन्यवाद!";
+form.reset();
+});
+}
+saveForm(document.getElementById("regForm"),"rsg_reg","regMsg");
+saveForm(document.getElementById("bookForm"),"rsg_book","bookMsg");
+
+const ADMIN_PIN="1234";
+function adminLogin(){
+if(document.getElementById("adminPin").value!==ADMIN_PIN){
+alert("गलत PIN");return;
+}
+document.getElementById("adminArea").classList.remove("hidden");
+showAdmin();
+}
+function showAdmin(){
+document.getElementById("regData").innerHTML=getData("rsg_reg")
+.map(x=>`<p>${safe(x.name)} | ${safe(x.phone)} | ${safe(x.district)}</p>`).join("")||"अभी कोई रजिस्ट्रेशन नहीं";
+document.getElementById("bookData").innerHTML=getData("rsg_book")
+.map(x=>`<p>${safe(x.name)} | ${safe(x.phone)} | ${safe(x.district)} | ${safe(x.kw)}</p>`).join("")||"अभी कोई बुकिंग नहीं";
+}
+function safe(s){
+return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function exportData(){
+let data={registrations:getData("rsg_reg"),bookings:getData("rsg_book")};
+let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+let a=document.createElement("a");a.href=URL.createObjectURL(blob);
+a.download="rajasthan-solar-data.json";a.click();
+URL.revokeObjectURL(a.href);
+}
+function adminLogout(){
+document.getElementById("adminArea").classList.add("hidden");
+document.getElementById("adminPin").value="";
+}
+const WHATSAPP_NUMBER="91XXXXXXXXXX";
+document.getElementById("waLink").href=
+"https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("मुझे Rajasthan Solar Guide से सोलर की जानकारी चाहिए।");
+</script>
 </body>
-</html>
+  </html>
+  
