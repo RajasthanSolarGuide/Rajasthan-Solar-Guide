@@ -3,175 +3,130 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rajasthan Solar Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajasthan Solar Guide - Admin</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f7f2;color:#222}
-header{background:#087b45;color:white;text-align:center;padding:25px 12px}
-header h1{margin:0 0 8px;font-size:25px}
-header p{margin:0}
-.container{max-width:550px;margin:20px auto;padding:18px}
-.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 15px #0001}
-h2{text-align:center;color:#087b45;margin-top:0}
-label{display:block;font-weight:bold;margin:13px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:7px;font-size:16px;background:white}
-textarea{min-height:75px}
-button{width:100%;padding:14px;background:#087b45;color:white;border:0;border-radius:8px;font-size:17px;font-weight:bold;margin-top:20px}
+body{margin:0;background:#f1f7f2;font-family:Arial,sans-serif;color:#222}
+header{background:#087b45;color:white;text-align:center;padding:20px}
+main{max-width:700px;margin:20px auto;padding:15px}
+.card{background:white;padding:18px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 10px #0001}
+input,button{width:100%;padding:13px;margin:8px 0;box-sizing:border-box;border-radius:7px;font-size:16px}
+input{border:1px solid #ccc}
+button{background:#087b45;color:white;border:0;font-weight:bold}
 button:disabled{opacity:.6}
-#message{text-align:center;margin-top:15px;font-weight:bold}
-footer{text-align:center;padding:18px;color:#666;font-size:13px}
+.customer{border-top:1px solid #ddd;padding:12px 0;line-height:1.7}
+small{color:#666}
 </style>
 </head>
 <body>
-
 <header>
-<h1>Rajasthan Solar Guide</h1>
-<p>राजस्थान में सोलर की जानकारी और सहायता</p>
+<h2>Rajasthan Solar Guide</h2>
+<p>Admin Panel</p>
 </header>
 
-<div class="container">
-<div class="card">
-<h2>Solar Registration Form</h2>
-
-<form id="solarForm">
-
-<label>ग्राहक का नाम *</label>
-<input id="name" required placeholder="अपना नाम लिखें">
-
-<label>मोबाइल नंबर *</label>
-<input id="mobile" type="tel" pattern="[6-9][0-9]{9}" maxlength="10" required placeholder="10 अंकों का मोबाइल नंबर">
-
-<label>जिला *</label>
-<select id="district" required>
-<option value="">जिला चुनें</option>
-<option>अजमेर</option>
-<option>अलवर</option>
-<option>बालोतरा</option>
-<option>बांसवाड़ा</option>
-<option>बारां</option>
-<option>बाड़मेर</option>
-<option>ब्यावर</option>
-<option>भरतपुर</option>
-<option>भीलवाड़ा</option>
-<option>बीकानेर</option>
-<option>बूंदी</option>
-<option>चित्तौड़गढ़</option>
-<option>चूरू</option>
-<option>दौसा</option>
-<option>डीग</option>
-<option>धौलपुर</option>
-<option>डीडवाना-कुचामन</option>
-<option>डूंगरपुर</option>
-<option>गंगानगर</option>
-<option>हनुमानगढ़</option>
-<option>जयपुर</option>
-<option>जैसलमेर</option>
-<option>जालोर</option>
-<option>झालावाड़</option>
-<option>झुंझुनूं</option>
-<option>जोधपुर</option>
-<option>करौली</option>
-<option>खैरथल-तिजारा</option>
-<option>कोटा</option>
-<option>कोटपूतली-बहरोड़</option>
-<option>नागौर</option>
-<option>पाली</option>
-<option>फलोदी</option>
-<option>प्रतापगढ़</option>
-<option>राजसमंद</option>
-<option>सलूम्बर</option>
-<option>सवाई माधोपुर</option>
-<option>सीकर</option>
-<option>सिरोही</option>
-<option>टोंक</option>
-<option>उदयपुर</option>
-</select>
-
-<label>तहसील *</label>
-<input id="tehsil" required placeholder="तहसील का नाम">
-
-<label>गाँव *</label>
-<input id="village" required placeholder="गाँव का नाम">
-
-<label>कितने KW का सोलर चाहिए? *</label>
-<select id="kw" required>
-<option value="">KW चुनें</option>
-<option>1 KW</option>
-<option>2 KW</option>
-<option>3 KW</option>
-<option>4 KW</option>
-<option>5 KW</option>
-<option>5 KW से अधिक</option>
-</select>
-
-<label>पूरा पता *</label>
-<textarea id="address" required placeholder="अपना पूरा पता लिखें"></textarea>
-
-<label>बिजली बिल की राशि (₹) *</label>
-<input id="bill" type="number" min="0" required placeholder="जैसे 1500">
-
-<button id="submitBtn" type="submit">Registration Submit करें</button>
+<main>
+<div class="card" id="loginBox">
+<h3>Admin Login</h3>
+<p>केवल अधिकृत Admin लॉगिन करें।</p>
+<input id="email" type="email" value="surgyanmeena145@gmail.com" readonly>
+<input id="password" type="password" placeholder="Firebase Password">
+<button id="loginBtn">Login करें</button>
 <p id="message"></p>
-
-</form>
-</div>
 </div>
 
-<footer>© Rajasthan Solar Guide</footer>
+<div class="card" id="dashboard" hidden>
+<h3>ग्राहकों की Registration</h3>
+<p id="count">लोड हो रहा है...</p>
+<button id="refreshBtn">Refresh करें</button>
+<div id="customers"></div>
+<button id="logoutBtn">Logout</button>
+</div>
+</main>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,getDocs,query,orderBy} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
-  authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
-  projectId: "rajasthan-solar-guide-f21c6",
-  storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
-  messagingSenderId: "1044592107049",
-  appId: "1:1044592107049:web:2d06c0497a640f81aac638",
-  measurementId: "G-M1NK9R147R"
+const firebaseConfig={
+apiKey:"AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
+authDomain:"rajasthan-solar-guide-f21c6.firebaseapp.com",
+projectId:"rajasthan-solar-guide-f21c6",
+storageBucket:"rajasthan-solar-guide-f21c6.firebasestorage.app",
+messagingSenderId:"1044592107049",
+appId:"1:1044592107049:web:2d06c0497a640f81aac638",
+measurementId:"G-M1NK9R147R"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-const form = document.getElementById("solarForm");
-const message = document.getElementById("message");
-const button = document.getElementById("submitBtn");
+const ADMIN_UID="bf3GhNSpTjUzv7b37B2vWFPi4Iw1";
+const loginBox=document.getElementById("loginBox");
+const dashboard=document.getElementById("dashboard");
+const message=document.getElementById("message");
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  button.disabled = true;
-  message.textContent = "जानकारी भेजी जा रही है...";
+document.getElementById("loginBtn").onclick=async()=>{
+message.textContent="Login हो रहा है...";
+try{
+await signInWithEmailAndPassword(
+auth,
+"surgyanmeena145@gmail.com",
+document.getElementById("password").value
+);
+}catch(e){
+message.textContent="Login नहीं हुआ। Password या Firebase Authentication जाँचें।";
+}
+};
 
-  const customerData = {
-    name: document.getElementById("name").value.trim(),
-    mobile: document.getElementById("mobile").value.trim(),
-    district: document.getElementById("district").value,
-    tehsil: document.getElementById("tehsil").value.trim(),
-    village: document.getElementById("village").value.trim(),
-    kw: document.getElementById("kw").value,
-    address: document.getElementById("address").value.trim(),
-    bill: Number(document.getElementById("bill").value),
-    createdAt: serverTimestamp()
-  };
-
-  try {
-    await addDoc(collection(db, "registrations"), customerData);
-    message.textContent = "Registration सफल हुआ! धन्यवाद।";
-    message.style.color = "green";
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    message.textContent = "जानकारी सेव नहीं हुई। Firebase Rules जाँचने की जरूरत है।";
-    message.style.color = "red";
-  } finally {
-    button.disabled = false;
-  }
+onAuthStateChanged(auth,async(user)=>{
+if(user && user.uid===ADMIN_UID){
+loginBox.hidden=true;
+dashboard.hidden=false;
+await loadCustomers();
+}else{
+dashboard.hidden=true;
+loginBox.hidden=false;
+}
 });
-</script>
 
+async function loadCustomers(){
+const area=document.getElementById("customers");
+area.textContent="जानकारी लोड हो रही है...";
+try{
+const q=query(collection(db,"registrations"),orderBy("createdAt","desc"));
+const result=await getDocs(q);
+document.getElementById("count").textContent="कुल ग्राहक: "+result.size;
+area.innerHTML="";
+if(result.empty){
+area.textContent="अभी कोई Registration नहीं है।";
+return;
+}
+result.forEach((doc)=>{
+const c=doc.data();
+const item=document.createElement("div");
+item.className="customer";
+const fields=[
+["नाम",c.name],["मोबाइल",c.mobile],["जिला",c.district],
+["तहसील",c.tehsil],["गाँव",c.village],["सोलर",c.kw],
+["पता",c.address],["बिजली बिल",c.bill]
+];
+fields.forEach(([label,value])=>{
+const line=document.createElement("div");
+line.textContent=label+": "+(value??"");
+item.appendChild(line);
+});
+area.appendChild(item);
+});
+}catch(e){
+area.textContent="जानकारी नहीं खुली। Firestore Security Rules की जाँच जरूरी है।";
+console.error(e);
+}
+}
+
+document.getElementById("refreshBtn").onclick=loadCustomers;
+document.getElementById("logoutBtn").onclick=()=>signOut(auth);
+</script>
 </body>
 </html>
