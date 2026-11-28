@@ -1,29 +1,177 @@
 
-rules_version = '2';
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajasthan Solar Guide</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f7f2;color:#222}
+header{background:#087b45;color:white;text-align:center;padding:25px 12px}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:0}
+.container{max-width:550px;margin:20px auto;padding:18px}
+.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 15px #0001}
+h2{text-align:center;color:#087b45;margin-top:0}
+label{display:block;font-weight:bold;margin:13px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:7px;font-size:16px;background:white}
+textarea{min-height:75px}
+button{width:100%;padding:14px;background:#087b45;color:white;border:0;border-radius:8px;font-size:17px;font-weight:bold;margin-top:20px}
+button:disabled{opacity:.6}
+#message{text-align:center;margin-top:15px;font-weight:bold}
+footer{text-align:center;padding:18px;color:#666;font-size:13px}
+</style>
+</head>
+<body>
 
-service cloud.firestore {
-  match /databases/{database}/documents {
+<header>
+<h1>Rajasthan Solar Guide</h1>
+<p>राजस्थान में सोलर की जानकारी और सहायता</p>
+</header>
 
-    match /registrations/{document} {
+<div class="container">
+<div class="card">
+<h2>Solar Registration Form</h2>
 
-      allow create: if
-        request.resource.data.keys().hasAll([
-          'name', 'mobile', 'district',
-          'tehsil', 'village', 'solarKW',
-          'address', 'bill', 'createdAt'
-        ])
-        && request.resource.data.name is string
-        && request.resource.data.mobile is string
-        && request.resource.data.mobile.matches('^[6-9][0-9]{9}$')
-        && request.resource.data.district is string
-        && request.resource.data.tehsil is string
-        && request.resource.data.village is string
-        && request.resource.data.solarKW is string
-        && request.resource.data.address is string
-        && request.resource.data.bill is number
-        && request.resource.data.bill >= 0;
+<form id="solarForm">
 
-      allow read, update, delete: if false;
-    }
+<label>ग्राहक का नाम *</label>
+<input id="name" required placeholder="अपना नाम लिखें">
+
+<label>मोबाइल नंबर *</label>
+<input id="mobile" type="tel" pattern="[6-9][0-9]{9}" maxlength="10" required placeholder="10 अंकों का मोबाइल नंबर">
+
+<label>जिला *</label>
+<select id="district" required>
+<option value="">जिला चुनें</option>
+<option>अजमेर</option>
+<option>अलवर</option>
+<option>बालोतरा</option>
+<option>बांसवाड़ा</option>
+<option>बारां</option>
+<option>बाड़मेर</option>
+<option>ब्यावर</option>
+<option>भरतपुर</option>
+<option>भीलवाड़ा</option>
+<option>बीकानेर</option>
+<option>बूंदी</option>
+<option>चित्तौड़गढ़</option>
+<option>चूरू</option>
+<option>दौसा</option>
+<option>डीग</option>
+<option>धौलपुर</option>
+<option>डीडवाना-कुचामन</option>
+<option>डूंगरपुर</option>
+<option>गंगानगर</option>
+<option>हनुमानगढ़</option>
+<option>जयपुर</option>
+<option>जैसलमेर</option>
+<option>जालोर</option>
+<option>झालावाड़</option>
+<option>झुंझुनूं</option>
+<option>जोधपुर</option>
+<option>करौली</option>
+<option>खैरथल-तिजारा</option>
+<option>कोटा</option>
+<option>कोटपूतली-बहरोड़</option>
+<option>नागौर</option>
+<option>पाली</option>
+<option>फलोदी</option>
+<option>प्रतापगढ़</option>
+<option>राजसमंद</option>
+<option>सलूम्बर</option>
+<option>सवाई माधोपुर</option>
+<option>सीकर</option>
+<option>सिरोही</option>
+<option>टोंक</option>
+<option>उदयपुर</option>
+</select>
+
+<label>तहसील *</label>
+<input id="tehsil" required placeholder="तहसील का नाम">
+
+<label>गाँव *</label>
+<input id="village" required placeholder="गाँव का नाम">
+
+<label>कितने KW का सोलर चाहिए? *</label>
+<select id="kw" required>
+<option value="">KW चुनें</option>
+<option>1 KW</option>
+<option>2 KW</option>
+<option>3 KW</option>
+<option>4 KW</option>
+<option>5 KW</option>
+<option>5 KW से अधिक</option>
+</select>
+
+<label>पूरा पता *</label>
+<textarea id="address" required placeholder="अपना पूरा पता लिखें"></textarea>
+
+<label>बिजली बिल की राशि (₹) *</label>
+<input id="bill" type="number" min="0" required placeholder="जैसे 1500">
+
+<button id="submitBtn" type="submit">Registration Submit करें</button>
+<p id="message"></p>
+
+</form>
+</div>
+</div>
+
+<footer>© Rajasthan Solar Guide</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
+  authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
+  projectId: "rajasthan-solar-guide-f21c6",
+  storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
+  messagingSenderId: "1044592107049",
+  appId: "1:1044592107049:web:2d06c0497a640f81aac638",
+  measurementId: "G-M1NK9R147R"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const form = document.getElementById("solarForm");
+const message = document.getElementById("message");
+const button = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  button.disabled = true;
+  message.textContent = "जानकारी भेजी जा रही है...";
+
+  const customerData = {
+    name: document.getElementById("name").value.trim(),
+    mobile: document.getElementById("mobile").value.trim(),
+    district: document.getElementById("district").value,
+    tehsil: document.getElementById("tehsil").value.trim(),
+    village: document.getElementById("village").value.trim(),
+    kw: document.getElementById("kw").value,
+    address: document.getElementById("address").value.trim(),
+    bill: Number(document.getElementById("bill").value),
+    createdAt: serverTimestamp()
+  };
+
+  try {
+    await addDoc(collection(db, "registrations"), customerData);
+    message.textContent = "Registration सफल हुआ! धन्यवाद।";
+    message.style.color = "green";
+    form.reset();
+  } catch (error) {
+    console.error(error);
+    message.textContent = "जानकारी सेव नहीं हुई। Firebase Rules जाँचने की जरूरत है।";
+    message.style.color = "red";
+  } finally {
+    button.disabled = false;
   }
-}
+});
+</script>
+
+</body>
+</html>
