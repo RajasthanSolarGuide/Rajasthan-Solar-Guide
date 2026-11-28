@@ -90,28 +90,54 @@ footer{text-align:center;background:#075b36;color:white;padding:20px}
 <a class="btn" href="https://pmkusum.mnre.gov.in/" target="_blank">किसान योजना देखें</a>
 </section>
 
+
 <section id="register">
 <h2>ग्राहक रजिस्ट्रेशन 📝</h2>
+<p>राजस्थान में सोलर लगवाने के लिए अपनी जानकारी भरें।</p>
+
 <form id="regForm">
+
 <label>पूरा नाम</label>
-<input name="name" required placeholder="अपना नाम">
+<input name="name" type="text" required placeholder="अपना पूरा नाम">
+
 <label>मोबाइल नंबर</label>
-<input name="phone" required type="tel" pattern="[0-9]{10}" placeholder="10 अंकों का नंबर">
-<label>जिला</label>
-<select name="district" class="districtSelect" required></select>
+<input name="phone" type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+
+<label>जिला चुनें</label>
+<select name="district" class="districtSelect" required>
+<option value="">अपना जिला चुनें</option>
+</select>
+
 <label>गाँव / शहर</label>
-<input name="village" required placeholder="गाँव या शहर">
-<label>सोलर का प्रकार</label>
-<select name="type">
+<input name="village" type="text" required placeholder="गाँव या शहर का नाम">
+
+<label>आपको किस प्रकार का सोलर चाहिए?</label>
+<select name="type" required>
+<option value="">सोलर का प्रकार चुनें</option>
 <option>घर का सोलर</option>
 <option>दुकान का सोलर</option>
 <option>खेत का सोलर</option>
 <option>सोलर पंप</option>
+<option>कमर्शियल सोलर</option>
 </select>
+
+<label>कितने किलोवाट का सोलर चाहिए?</label>
+<select name="kw" required>
+<option value="">क्षमता चुनें</option>
+<option>1 KW</option>
+<option>2 KW</option>
+<option>3 KW</option>
+<option>5 KW</option>
+<option>10 KW</option>
+<option>10 KW से अधिक</option>
+</select>
+
 <button type="submit">रजिस्ट्रेशन करें</button>
+
 </form>
 <p id="regMsg"></p>
 </section>
+  
 
 <section id="booking">
 <h2>ऑनलाइन सोलर बुकिंग 📅</h2>
