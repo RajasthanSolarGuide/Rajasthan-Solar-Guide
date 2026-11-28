@@ -343,68 +343,7 @@ const WHATSAPP_NUMBER="91XXXXXXXXXX";
 document.getElementById("waLink").href=
 "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("मुझे Rajasthan Solar Guide से सोलर की जानकारी चाहिए।");
   </script>
-const firebaseConfig = {
-  apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
-  authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
-  projectId: "rajasthan-solar-guide-f21c6",
-  storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
-  messagingSenderId: "1044592107049",
-  appId: "1:1044592107049:web:1bf53a941e827c68aac638",
-  measurementId: "G-XG0J59CV0M"
-}
-  
-<script type="module">
-saveForm(document.getElementById("regForm"),"rsg_reg","regMsg");
-saveForm(document.getElementById("bookForm"),"rsg_book","bookMsg");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
-  authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
-  projectId: "rajasthan-solar-guide-f21c6",
-  storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
-  messagingSenderId: "1044592107049",
-  appId: "1:1044592107049:web:1bf53a941e827c68aac638"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-document.getElementById("regForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const data = Object.fromEntries(new FormData(form).entries());
-
-  try {
-    await addDoc(collection(db, "registrations"), {
-      ...data,
-      createdAt: serverTimestamp()
-    });
-    alert("आपका रजिस्ट्रेशन सफल हुआ!");
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    alert("रजिस्ट्रेशन नहीं हुआ। कृपया बाद में कोशिश करें।");
-  }
-});
-
-document.getElementById("bookForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const data = Object.fromEntries(new FormData(form).entries());
-
-  try {
-    await addDoc(collection(db, "bookings"), {
-      ...data,
-      createdAt: serverTimestamp()
-    });
-    alert("आपकी बुकिंग सफल हुई!");
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    alert("बुकिंग नहीं हुई। कृपया बाद में कोशिश करें।");
-  }
-});
-</script>
 </body>
   </html>
   
