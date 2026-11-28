@@ -343,6 +343,45 @@ document.getElementById("waLink").href=
 "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("मुझे Rajasthan Solar Guide से सोलर की जानकारी चाहिए।");
   </script>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
+  authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
+  projectId: "rajasthan-solar-guide-f21c6",
+  storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
+  messagingSenderId: "1044592107049",
+  appId: "1:1044592107049:web:2d06c0497a640f81aac638",
+  measurementId: "G-M1NK9R147R"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.saveRegistration = async function(data) {
+  try {
+    await addDoc(collection(db, "registrations"), {
+      ...data,
+      createdAt: serverTimestamp()
+    });
+
+    alert("आपका रजिस्ट्रेशन सफलतापूर्वक सेव हो गया!");
+    return true;
+  } catch (error) {
+    console.error("Firebase Error:", error);
+    alert("डेटा सेव नहीं हुआ: " + error.message);
+    return false;
+  }
+};
+</script>
 </body>
   </html>
   
