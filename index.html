@@ -295,7 +295,7 @@ r.innerHTML=`मासिक यूनिट: ${Math.round(units)}<br>
 function getData(key){
 try{return JSON.parse(localStorage.getItem(key)||"[]")}catch(e){return []}
 }
-function saveForm(form,key,msg){
+functionsaveForm(form,key,msg){
 form.addEventListener("submit",e=>{
 e.preventDefault();
 let data=Object.fromEntries(new FormData(form).entries());
@@ -310,24 +310,24 @@ form.reset();
 saveForm(document.getElementById("regForm"),"rsg_reg","regMsg");
 saveForm(document.getElementById("bookForm"),"rsg_book","bookMsg");
 
-const ADMIN_PIN="1234";
-function adminLogin(){
-if(document.getElementById("adminPin").value!==ADMIN_PIN){
-alert("गलत PIN");return;
+constADMIN_PIN="1234";
+functionadminLogin(){
+i(document.getElementById("adminPin").value!==ADMIN_PIN){
+alet all=getData(key);all.push(data);lert("गलत PIN"); returns;
 }
 document.getElementById("adminArea").classList.remove("hidden");
 showAdmin();
 }
-function showAdmin(){
+functionshowAdmin(){
 document.getElementById("regData").innerHTML=getData("rsg_reg")
 .map(x=>`<p>${safe(x.name)} | ${safe(x.phone)} | ${safe(x.district)}</p>`).join("")||"अभी कोई रजिस्ट्रेशन नहीं";
 document.getElementById("bookData").innerHTML=getData("rsg_book")
 .map(x=>`<p>${safe(x.name)} | ${safe(x.phone)} | ${safe(x.district)} | ${safe(x.kw)}</p>`).join("")||"अभी कोई बुकिंग नहीं";
 }
-function safe(s){
+functionsafe(s){
 return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-function exportData(){
+functionexportData(){
 let data={registrations:getData("rsg_reg"),bookings:getData("rsg_book")};
 let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
 let a=document.createElement("a");a.href=URL.createObjectURL(blob);
@@ -345,15 +345,14 @@ document.getElementById("waLink").href=
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 import {
   getFirestore,
   collection,
   addDoc,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig = {
+constfirebaseConfig = {
   apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
   authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
   projectId: "rajasthan-solar-guide-f21c6",
@@ -363,14 +362,13 @@ const firebaseConfig = {
   measurementId: "G-M1NK9R147R"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+constapp = initializeApp(firebaseConfig);
+constdb = getFirestore(app);
 
-window.saveRegistration = async function(data) {
-  try {
-    await addDoc(collection(db, "registrations"), {
+window.saveRegistration = asyncfunction(data) {<tray {
+    awaitaddDoc(collection(db, "registrations"), {
       ...data,
-      createdAt: serverTimestamp()
+      cconsole.error(\"Firebase Error:\", error);reatedAt: serverTimestamp()
     });
 
     alert("आपका रजिस्ट्रेशन सफलतापूर्वक सेव हो गया!");
