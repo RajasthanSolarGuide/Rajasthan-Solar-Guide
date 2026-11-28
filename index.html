@@ -3,130 +3,231 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rajasthan Solar Guide - Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajasthan Solar Guide</title>
 <style>
-body{margin:0;background:#f1f7f2;font-family:Arial,sans-serif;color:#222}
-header{background:#087b45;color:white;text-align:center;padding:20px}
-main{max-width:700px;margin:20px auto;padding:15px}
-.card{background:white;padding:18px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 10px #0001}
-input,button{width:100%;padding:13px;margin:8px 0;box-sizing:border-box;border-radius:7px;font-size:16px}
-input{border:1px solid #ccc}
-button{background:#087b45;color:white;border:0;font-weight:bold}
-button:disabled{opacity:.6}
-.customer{border-top:1px solid #ddd;padding:12px 0;line-height:1.7}
-small{color:#666}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7f4;color:#222}
+header{background:#087b45;color:white;text-align:center;padding:25px 12px}
+header h1{margin:0 0 8px}
+nav{background:#075c36;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:8px;font-size:14px}
+.container{max-width:750px;margin:auto;padding:14px}
+.card{background:white;padding:18px;margin:15px 0;border-radius:12px;box-shadow:0 2px 9px #0001}
+h2{color:#087b45;margin-top:0}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:7px;font-size:16px}
+button{background:#087b45;color:white;border:0;padding:13px 18px;border-radius:7px;font-size:16px;width:100%;margin-top:8px}
+.whatsapp{display:block;background:#159b50;color:white;text-align:center;padding:14px;border-radius:8px;text-decoration:none;font-weight:bold}
+.small{font-size:13px;color:#666}
+footer{background:#075c36;color:white;text-align:center;padding:18px}
 </style>
 </head>
 <body>
+
 <header>
-<h2>Rajasthan Solar Guide</h2>
-<p>Admin Panel</p>
+<h1>☀️ Rajasthan Solar Guide</h1>
+<p>राजस्थान में सोलर की पूरी जानकारी और ऑनलाइन बुकिंग</p>
 </header>
 
-<main>
-<div class="card" id="loginBox">
-<h3>Admin Login</h3>
-<p>केवल अधिकृत Admin लॉगिन करें।</p>
-<input id="email" type="email" value="surgyanmeena145@gmail.com" readonly>
-<input id="password" type="password" placeholder="Firebase Password">
-<button id="loginBtn">Login करें</button>
-<p id="message"></p>
+<nav>
+<a href="#calculator">कैलकुलेटर</a>
+<a href="#booking">बुकिंग</a>
+<a href="#subsidy">सब्सिडी</a>
+<a href="#login">लॉगिन</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>हमारी सेवाएँ</h2>
+<p>घर पर सोलर लगवाने की जानकारी और बुकिंग के लिए हमसे संपर्क करें।</p>
+<a class="whatsapp" id="whatsappLink" href="https://wa.me/918769115218" target="_blank">
+📱 WhatsApp पर संपर्क करें
+</a>
 </div>
 
-<div class="card" id="dashboard" hidden>
-<h3>ग्राहकों की Registration</h3>
-<p id="count">लोड हो रहा है...</p>
-<button id="refreshBtn">Refresh करें</button>
-<div id="customers"></div>
-<button id="logoutBtn">Logout</button>
+<div class="card" id="calculator">
+<h2>☀️ Solar Calculator</h2>
+<label>आपका बिजली बिल (₹ प्रति माह)</label>
+<input type="number" id="bill" placeholder="जैसे 2000">
+<button onclick="calculateSolar()">सोलर क्षमता जानें</button>
+<p id="result"></p>
+<p class="small">यह केवल शुरुआती अनुमान है। सही क्षमता बिजली उपयोग और छत की जगह पर निर्भर करेगी।</p>
 </div>
-</main>
+
+<div class="card" id="subsidy">
+<h2>सरकारी सोलर सब्सिडी</h2>
+<p>PM Surya Ghar योजना के तहत पात्र घरेलू उपभोक्ताओं को केंद्रीय सहायता मिल सकती है।</p>
+<ul>
+<li>पहले 2 KW पर ₹30,000 प्रति KW</li>
+<li>तीसरे KW पर ₹18,000</li>
+<li>अधिकतम केंद्रीय सब्सिडी ₹78,000</li>
+</ul>
+<a href="https://pmsuryaghar.gov.in/" target="_blank">सरकारी पोर्टल पर जानकारी देखें</a>
+<p class="small">पात्रता और नियम सरकारी पोर्टल पर जाँचें।</p>
+</div>
+
+<div class="card" id="login">
+<h2>ग्राहक लॉगिन / रजिस्ट्रेशन</h2>
+<input type="email" id="email" placeholder="अपना Gmail लिखें">
+<input type="password" id="password" placeholder="पासवर्ड">
+<button onclick="signup()">नया अकाउंट बनाएँ</button>
+<button onclick="login()">लॉगिन करें</button>
+<button onclick="logout()">लॉगआउट</button>
+<p id="authStatus"></p>
+</div>
+
+<div class="card" id="booking">
+<h2>📝 ऑनलाइन सोलर बुकिंग फॉर्म</h2>
+<form id="bookingForm">
+<input id="name" placeholder="ग्राहक का नाम" required>
+<input id="mobile" type="tel" maxlength="10" placeholder="मोबाइल नंबर" required>
+<select id="district" required>
+<option value="">जिला चुनें</option>
+<option>अजमेर</option><option>अलवर</option>
+<option>जयपुर</option><option>टोंक</option>
+<option>दौसा</option><option>कोटा</option>
+<option>सीकर</option><option>उदयपुर</option>
+<option>जोधपुर</option><option>बीकानेर</option>
+<option>भरतपुर</option><option>भीलवाड़ा</option>
+<option>अन्य</option>
+</select>
+<input id="tehsil" placeholder="तहसील" required>
+<input id="village" placeholder="गाँव" required>
+<select id="kw" required>
+<option value="">कितने KW का सोलर चाहिए?</option>
+<option>1 KW</option>
+<option>2 KW</option>
+<option>3 KW</option>
+<option>5 KW</option>
+<option>10 KW</option>
+<option>अन्य</option>
+</select>
+<textarea id="address" placeholder="पूरा पता" required></textarea>
+<input id="billAmount" type="number" placeholder="मासिक बिजली बिल (₹)" required>
+<button type="submit">बुकिंग जमा करें</button>
+</form>
+<p id="bookingStatus"></p>
+</div>
+
+</div>
+
+<footer>
+<p>© Rajasthan Solar Guide</p>
+<p>WhatsApp: 8769115218</p>
+</footer>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getFirestore,collection,getDocs,query,orderBy} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+ getAuth, createUserWithEmailAndPassword,
+ signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+ getFirestore, collection, addDoc, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig={
-apiKey:"AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
-authDomain:"rajasthan-solar-guide-f21c6.firebaseapp.com",
-projectId:"rajasthan-solar-guide-f21c6",
-storageBucket:"rajasthan-solar-guide-f21c6.firebasestorage.app",
-messagingSenderId:"1044592107049",
-appId:"1:1044592107049:web:2d06c0497a640f81aac638",
-measurementId:"G-M1NK9R147R"
+const firebaseConfig = {
+ apiKey: "AIzaSyAlosbBNsfb1s01Pzx-YKXXL5IZLgRB7jo",
+ authDomain: "rajasthan-solar-guide-f21c6.firebaseapp.com",
+ projectId: "rajasthan-solar-guide-f21c6",
+ storageBucket: "rajasthan-solar-guide-f21c6.firebasestorage.app",
+ messagingSenderId: "1044592107049",
+ appId: "1:1044592107049:web:2d06c0497a640f81aac638",
+ measurementId: "G-M1NK9R147R"
 };
 
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-const ADMIN_UID="bf3GhNSpTjUzv7b37B2vWFPi4Iw1";
-const loginBox=document.getElementById("loginBox");
-const dashboard=document.getElementById("dashboard");
-const message=document.getElementById("message");
+const WHATSAPP_NUMBER = "918769115218";
 
-document.getElementById("loginBtn").onclick=async()=>{
-message.textContent="Login हो रहा है...";
-try{
-await signInWithEmailAndPassword(
-auth,
-"surgyanmeena145@gmail.com",
-document.getElementById("password").value
-);
-}catch(e){
-message.textContent="Login नहीं हुआ। Password या Firebase Authentication जाँचें।";
-}
+document.getElementById("whatsappLink").href =
+ "https://wa.me/" + WHATSAPP_NUMBER +
+ "?text=" + encodeURIComponent("नमस्ते, मुझे सोलर की जानकारी चाहिए।");
+
+window.calculateSolar = function(){
+ const bill = Number(document.getElementById("bill").value);
+ if(!bill || bill <= 0){
+  document.getElementById("result").innerText="कृपया सही बिजली बिल लिखें।";
+  return;
+ }
+ const units = bill / 8;
+ const kw = Math.max(1, Math.ceil(units / 120));
+ document.getElementById("result").innerText =
+ "अनुमानित सोलर क्षमता: " + kw + " KW";
 };
 
-onAuthStateChanged(auth,async(user)=>{
-if(user && user.uid===ADMIN_UID){
-loginBox.hidden=true;
-dashboard.hidden=false;
-await loadCustomers();
-}else{
-dashboard.hidden=true;
-loginBox.hidden=false;
-}
+window.signup = async function(){
+ try{
+  await createUserWithEmailAndPassword(
+   auth,
+   document.getElementById("email").value,
+   document.getElementById("password").value
+  );
+  alert("रजिस्ट्रेशन सफल!");
+ }catch(e){alert(e.message);}
+};
+
+window.login = async function(){
+ try{
+  await signInWithEmailAndPassword(
+   auth,
+   document.getElementById("email").value,
+   document.getElementById("password").value
+  );
+  alert("लॉगिन सफल!");
+ }catch(e){alert(e.message);}
+};
+
+window.logout = async function(){
+ try{
+  await signOut(auth);
+  alert("लॉगआउट सफल!");
+ }catch(e){alert(e.message);}
+};
+
+onAuthStateChanged(auth,user=>{
+ document.getElementById("authStatus").innerText =
+ user ? "लॉगिन है: " + user.email : "अभी लॉगिन नहीं है।";
 });
 
-async function loadCustomers(){
-const area=document.getElementById("customers");
-area.textContent="जानकारी लोड हो रही है...";
-try{
-const q=query(collection(db,"registrations"),orderBy("createdAt","desc"));
-const result=await getDocs(q);
-document.getElementById("count").textContent="कुल ग्राहक: "+result.size;
-area.innerHTML="";
-if(result.empty){
-area.textContent="अभी कोई Registration नहीं है।";
-return;
-}
-result.forEach((doc)=>{
-const c=doc.data();
-const item=document.createElement("div");
-item.className="customer";
-const fields=[
-["नाम",c.name],["मोबाइल",c.mobile],["जिला",c.district],
-["तहसील",c.tehsil],["गाँव",c.village],["सोलर",c.kw],
-["पता",c.address],["बिजली बिल",c.bill]
-];
-fields.forEach(([label,value])=>{
-const line=document.createElement("div");
-line.textContent=label+": "+(value??"");
-item.appendChild(line);
+document.getElementById("bookingForm").addEventListener("submit",async function(e){
+ e.preventDefault();
+ const user = auth.currentUser;
+ if(!user){
+  alert("बुकिंग के लिए पहले ग्राहक लॉगिन करें।");
+  return;
+ }
+ const mobile = document.getElementById("mobile").value.trim();
+ if(!/^[0-9]{10}$/.test(mobile)){
+  alert("कृपया सही 10 अंकों का मोबाइल नंबर लिखें।");
+  return;
+ }
+ try{
+  await addDoc(collection(db,"registrations"),{
+   name:document.getElementById("name").value.trim(),
+   mobile:mobile,
+   district:document.getElementById("district").value,
+   tehsil:document.getElementById("tehsil").value.trim(),
+   village:document.getElementById("village").value.trim(),
+   kw:document.getElementById("kw").value,
+   address:document.getElementById("address").value.trim(),
+   billAmount:Number(document.getElementById("billAmount").value),
+   uid:user.uid,
+   status:"नई बुकिंग",
+   createdAt:serverTimestamp()
+  });
+  document.getElementById("bookingStatus").innerText =
+   "आपकी बुकिंग सफलतापूर्वक जमा हो गई!";
+  this.reset();
+ }catch(error){
+  document.getElementById("bookingStatus").innerText =
+   "बुकिंग जमा नहीं हुई: " + error.message;
+ }
 });
-area.appendChild(item);
-});
-}catch(e){
-area.textContent="जानकारी नहीं खुली। Firestore Security Rules की जाँच जरूरी है।";
-console.error(e);
-}
-}
-
-document.getElementById("refreshBtn").onclick=loadCustomers;
-document.getElementById("logoutBtn").onclick=()=>signOut(auth);
 </script>
+
 </body>
 </html>
