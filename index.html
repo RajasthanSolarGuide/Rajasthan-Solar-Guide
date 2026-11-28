@@ -250,19 +250,24 @@ const districts = [
   "उदयपुर"
 ];
 
-// सभी जिला ड्रॉपडाउन में नाम जोड़ें
 
-document.querySelectorAll(".districtSelect").forEach(select => {
-  select.innerHTML = '<option value="">जिला चुनें</option>';
+function loadDistricts() {
+  const selects = document.querySelectorAll(".districtSelect");
 
-  districts.forEach(district => {
-    const option = document.createElement("option");
-    option.value = district;
-    option.textContent = district;
-    select.appendChild(option);
+  selects.forEach(select => {
+    select.innerHTML = '<option value="">जिला चुनें</option>';
+
+    districts.forEach(district => {
+      const option = document.createElement("option");
+      option.value = district;
+      option.textContent = district;
+      select.appendChild(option);
+    });
   });
-});
+}
 
+loadDistricts();
+  
 function filterDistricts(){
 let q=document.getElementById("districtSearch").value.toLowerCase();
 document.getElementById("districtList").innerHTML=
