@@ -251,6 +251,7 @@ const districts = [
 ];
 
 // सभी जिला ड्रॉपडाउन में नाम जोड़ें
+
 document.querySelectorAll(".districtSelect").forEach(select => {
   select.innerHTML = '<option value="">जिला चुनें</option>';
 
@@ -260,13 +261,6 @@ document.querySelectorAll(".districtSelect").forEach(select => {
     option.textContent = district;
     select.appendChild(option);
   });
-});
-  
-];
-
-document.querySelectorAll(".districtSelect").forEach(s=>{
-s.innerHTML='<option value="">जिला चुनें</option>'+
-districts.map(d=>`<option>${d}</option>`).join("");
 });
 
 function filterDistricts(){
